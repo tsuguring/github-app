@@ -30,7 +30,7 @@
     $ cd github-app
     ```
     
-2. `make setup` を実行
+2. `open github-app.xcworkspace/` を実行
 ## アーキテクチャ
 
 ## モジュール分割
