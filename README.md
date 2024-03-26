@@ -1,4 +1,4 @@
-<h1 align="center"> github-app </h1> <br>
+<h1 align="center"> GitHubApp </h1> <br>
 
 ## 目次
 
