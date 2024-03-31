@@ -3,13 +3,8 @@
 
 import PackageDescription
 
-let productionFeatures: [PackageDescription.Target.Dependency] = [
-    "HomeFeature",
-    "ProfileFeature",
-]
-
 let package = Package(
-    name: "github-app",
+    name: "GitHubApp",
     defaultLocalization: "ja",
     platforms: [
         .iOS(.v16),
@@ -27,11 +22,11 @@ let package = Package(
         // Apps layer
         .target(
             name: "DevelopApp",
-            dependencies: productionFeatures,
+            dependencies: ["HomeFeature"],
             path: "./Sources/Apps/Develop"),
         .target(
             name: "ProductionApp",
-            dependencies: productionFeatures,
+            dependencies: ["HomeFeature"],
             path: "./Sources/Apps/Production"),
         
         // Features layer
@@ -39,20 +34,12 @@ let package = Package(
             name: "HomeFeature",
             dependencies: ["RepoData"],
             path: "./Sources/Features/Home"),
-        .target(
-            name: "ProfileFeature",
-            dependencies: ["UserData"],
-            path: "./Sources/Features/Profile"),
         
         //Data layer
         .target(
-            name: "UserData",
+            name: "GitHubData",
             dependencies: ["NetworkCore"],
-            path: "./Sources/Data/User"),
-        .target(
-            name: "RepoData",
-            dependencies: ["NetworkCore"],
-            path: "./Sources/Data/Repo"),
+            path: "./Sources/Data/GitHub"),
         
         //Core layer
         .target(
