@@ -23,16 +23,20 @@ package struct Repository: Codable {
         case description
     }
     
-    let id: Int
-    let name: String
-    let fullName: String
-    let owner: User
-    let starsCount: Int
-    let watchersCount: Int
-    let forksCount: Int
-    let openIssuesCount: Int
-    let language: String?
-    let htmlPath: String
-    let websitePath: String?
-    let description: String?
+    package let id: Int
+    package let name: String
+    package let fullName: String
+    package let owner: User
+    package let starsCount: Int
+    package let watchersCount: Int
+    package let forksCount: Int
+    package let openIssuesCount: Int
+    package let language: String?
+    package let htmlPath: String
+    package let websitePath: String?
+    package let description: String?
+}
+
+extension Repository {
+    package static var sampleData = Repository(id: 1296269, name: "MDEwOlJlcG9zaXRvcnkxMjk2MjY5", fullName: "Hello-World", owner: User(id: 1, name: "octocat", avatarImagePath: "https://github.com/images/error/octocat_happy.gif", htmlPath: "https://github.com/octocat"), starsCount: 80, watchersCount: 80, forksCount: 9, openIssuesCount: 0, language: nil, htmlPath: "https://github.com/octocat/Hello-World", websitePath: "https://github.com", description: "This your first repo!")
 }
