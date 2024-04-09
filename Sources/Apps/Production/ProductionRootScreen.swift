@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import HomeFeature
 
 public struct ProductionRootScreen: View {
     public var body: some View {
-        Text("Hello, World!")
+        NavigationStack {
+            HomeView()
+        }
     }
     
     public init() {}

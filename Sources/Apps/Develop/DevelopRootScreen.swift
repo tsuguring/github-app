@@ -6,11 +6,20 @@
 //
 
 import SwiftUI
+import HomeFeature
 
 public struct DevelopRootScreen: View {
     public var body: some View {
-        Text("Hello, World!")
+        NavigationStack {
+            HomeView()
+        }
     }
     
     public init() {}
 }
+
+#if DEBUG
+#Preview {
+    DevelopRootScreen()
+}
+#endif
