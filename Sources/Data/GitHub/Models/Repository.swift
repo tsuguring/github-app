@@ -38,5 +38,4 @@ package struct Repository: Codable {
 }
 
 extension Repository {
-    package static var sampleData = Repository(id: 1296269, name: "MDEwOlJlcG9zaXRvcnkxMjk2MjY5", fullName: "Hello-World", owner: User(id: 1, name: "octocat", avatarImagePath: "https://github.com/images/error/octocat_happy.gif", htmlPath: "https://github.com/octocat"), starsCount: 80, watchersCount: 80, forksCount: 9, openIssuesCount: 0, language: nil, htmlPath: "https://github.com/octocat/Hello-World", websitePath: "https://github.com", description: "This your first repo!")
-}
+    package static var sampleData = Repository(id: 609430492, name: "R_kgDOJFMr3A", fullName: "vbt-watch", owner: User(id: 52564598, name: "tsuguring", avatarImagePath: "https://avatars.githubusercontent.com/u/52564598?v=4", htmlPath: "https://github.com/tsuguring"), starsCount: 0, watchersCount: 0, forksCount: 1, openIssuesCount: 0, language: "Swift", htmlPath: "https://github.com/tsuguring/vbt-watch", websitePath: "", description: "watchOS apps that support VBT") }
