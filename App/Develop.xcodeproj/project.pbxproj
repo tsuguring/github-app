@@ -8,15 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		639C60022BB1C660004A40D6 /* DevelopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C60012BB1C660004A40D6 /* DevelopApp.swift */; };
-		639C60042BB1C660004A40D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C60032BB1C660004A40D6 /* ContentView.swift */; };
 		639C60062BB1C661004A40D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639C60052BB1C661004A40D6 /* Assets.xcassets */; };
 		639C60092BB1C661004A40D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639C60082BB1C661004A40D6 /* Preview Assets.xcassets */; };
+		63B7C6472BBD813800A045F8 /* Develop in Frameworks */ = {isa = PBXBuildFile; productRef = 63B7C6462BBD813800A045F8 /* Develop */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		639C5FFE2BB1C660004A40D6 /* Develop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Develop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		639C60012BB1C660004A40D6 /* DevelopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopApp.swift; sourceTree = "<group>"; };
-		639C60032BB1C660004A40D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		639C60052BB1C661004A40D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		639C60082BB1C661004A40D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -26,6 +25,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B7C6472BBD813800A045F8 /* Develop in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +37,7 @@
 			children = (
 				639C60002BB1C660004A40D6 /* Develop */,
 				639C5FFF2BB1C660004A40D6 /* Products */,
+				63B7C6452BBD813800A045F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				639C60012BB1C660004A40D6 /* DevelopApp.swift */,
-				639C60032BB1C660004A40D6 /* ContentView.swift */,
 				639C60052BB1C661004A40D6 /* Assets.xcassets */,
 				639C60072BB1C661004A40D6 /* Preview Content */,
 			);
@@ -65,6 +65,13 @@
 				639C60082BB1C661004A40D6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		63B7C6452BBD813800A045F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +90,9 @@
 			dependencies = (
 			);
 			name = Develop;
+			packageProductDependencies = (
+				63B7C6462BBD813800A045F8 /* Develop */,
+			);
 			productName = Develop;
 			productReference = 639C5FFE2BB1C660004A40D6 /* Develop.app */;
 			productType = "com.apple.product-type.application";
@@ -137,7 +147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				639C60042BB1C660004A40D6 /* ContentView.swift in Sources */,
 				639C60022BB1C660004A40D6 /* DevelopApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +353,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		63B7C6462BBD813800A045F8 /* Develop */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Develop;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 639C5FF62BB1C660004A40D6 /* Project object */;
 }
