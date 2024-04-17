@@ -42,6 +42,9 @@
 
 ## モジュール分割
 
+<img src="https://github.com/tsuguring/github-app/assets/52564598/ca7ec1fc-de8f-49b8-86d8-94aa3c462fce" width=1300>
+
+
 ## コーディングルール
 
-## パッケージ管理
+[API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/)
