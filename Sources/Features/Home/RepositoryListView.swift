@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import GitHubData
 
 struct RepositoryListView: View {
+    let repositories: [Repository]
     var body: some View {
         List{
-            RepositoryRowView()
+            ForEach(repositories) { repository in
+                RepositoryRowView(repository: repository)
+            }
         }
     }
 }
