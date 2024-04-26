@@ -11,24 +11,22 @@ import Foundation
 struct RepositoryUIState {
     var repositories: [Repository] = []
     var searchText: String = ""
-    
-    var filteredRepositories: [Repository] {
-        repositories.filter {
-            searchText.isEmpty
-            || $0.name.contains(searchText)
-        }
-    }
 }
 
 @MainActor
 final class HomeViewModel: ObservableObject {
     @Published private(set) var uiState: RepositoryUIState = RepositoryUIState()
+    private let repository: RepoRepository
     
-    func search() {
-        //TODO: Repositoryデータの取得をする関数の呼び出し
+    init(repository: some RepoRepository = RepoDefaultRepository()) {
+        self.repository = repository
     }
     
     func changeSearchText(_ searchText: String) {
         uiState.searchText = searchText
+    }
+    
+    func searchRepositories() async throws {
+        uiState.repositories = try await self.repository.searchRepository(keyword: uiState.searchText)
     }
 }
