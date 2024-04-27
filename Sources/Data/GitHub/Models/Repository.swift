@@ -7,7 +7,7 @@
 
 import Foundation
 
-package struct Repository: Codable {
+package struct Repository: Codable, Identifiable {
     private enum CodingKeys: String, CodingKey {
         case id
         case name

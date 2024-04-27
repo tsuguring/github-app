@@ -9,12 +9,12 @@ import SwiftUI
 import GitHubData
 
 struct RepositoryRowView: View {
-    let sampleRepositoryData = Repository.sampleData
+    let repository: Repository
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 ownerImage
-                Text(sampleRepositoryData.owner.name)
+                Text(repository.owner.name)
             }
             title
             description
@@ -28,7 +28,7 @@ struct RepositoryRowView: View {
 
 private extension RepositoryRowView {
     var imageURL: URL? {
-        URL(string: sampleRepositoryData.owner.avatarImagePath)
+        URL(string: repository.owner.avatarImagePath)
     }
     
     var ownerImage: some View {
@@ -41,14 +41,14 @@ private extension RepositoryRowView {
     }
     
     var title: some View {
-        Text(sampleRepositoryData.fullName)
+        Text(repository.fullName)
             .bold()
             .font(.system(size: 20))
             .padding(.vertical, 1)
     }
     
     @ViewBuilder var description: some View {
-        if let description = sampleRepositoryData.description {
+        if let description = repository.description {
             Text(description).padding(.bottom, 1)
         }
     }
@@ -56,12 +56,12 @@ private extension RepositoryRowView {
     var starCount: some View {
         HStack(spacing: 0) {
             Image(systemName: "star")
-            Text(String(sampleRepositoryData.starsCount))
+            Text(String(repository.starsCount))
         }
     }
     
     @ViewBuilder var language: some View {
-        if let language = sampleRepositoryData.language {
+        if let language = repository.language {
             HStack(spacing: 0) {
                 Image(systemName: "text.word.spacing")
                 Text(language)
