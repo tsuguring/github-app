@@ -7,7 +7,19 @@
 
 import Foundation
 
-enum APIClientError: Error {
-    case connectionError(Data)
+package enum APIClientError: Error {
+    case connectionError
     case apiError
+    case parseError
+    
+    package var message: String {
+        switch self {
+        case .apiError:
+            return "サーバーからのエラーが発生しました"
+        case .connectionError:
+            return "サーバーと接続できませんでした"
+        case .parseError:
+            return "データの取得に失敗しました"
+        }
+    }
 }
