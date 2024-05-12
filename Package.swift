@@ -32,7 +32,7 @@ let package = Package(
         // Features layer
         .target(
             name: "HomeFeature",
-            dependencies: ["GitHubData"],
+            dependencies: ["GitHubData", "UICore"],
             path: "./Sources/Features/Home"),
         
         //Data layer
