@@ -11,9 +11,10 @@ package struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
     package var body: some View {
         RepositoryListView(viewModel: viewModel)
+            .navigationBarTitleDisplayMode(.inline)
             .searchable(text: .init(get: { viewModel.uiState.searchText }, set: { newValue in
                 viewModel.changeSearchText(newValue)
-            }))
+            }), placement: .navigationBarDrawer(displayMode: .always))
             .onSubmit(of: .search) {
                 Task {
                     await viewModel.searchRepositories()
