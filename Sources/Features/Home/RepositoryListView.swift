@@ -37,8 +37,8 @@ private extension RepositoryListView {
                 .padding(.bottom, 10)
             Text("GitHubのリポジトリを検索できます")
         }
-        
     }
+    
     var Loading: some View {
         VStack {
             ProgressView()
@@ -52,28 +52,41 @@ private extension RepositoryListView {
                 RepositoryRowView(repository: repository)
             }
         }
+        .refreshable {
+            await viewModel.sendAsync(.onPullToRefresh)
+        }
     }
     
     func Error(_ error: Error) -> some View {
-        VStack {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .resizable()
-                .frame(width: 70, height: 70)
-            Text("リポジトリが取得できませんでした")
-                .font(.system(size:20))
-                .bold()
-                .padding(.bottom, 10)
-            if let fetchError = error as? APIClientError {
-                switch fetchError {
-                case .apiError:
-                    Text(fetchError.message)
-                case .connectionError:
-                    Text(fetchError.message)
-                case .parseError:
-                    Text(fetchError.message)
+        // ScrollView内のViewを中央揃えにするためGeometryReaderを使用
+        GeometryReader { geometry in
+            ScrollView {
+                VStack {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .resizable()
+                        .frame(width: 70, height: 70)
+                    Text("リポジトリが取得できませんでした")
+                        .font(.system(size:20))
+                        .bold()
+                        .padding(.bottom, 10)
+                    if let fetchError = error as? APIClientError {
+                        switch fetchError {
+                        case .apiError:
+                            Text(fetchError.message)
+                        case .connectionError:
+                            Text(fetchError.message)
+                        case .parseError:
+                            Text(fetchError.message)
+                        }
+                    } else {
+                        Text(error.localizedDescription)
+                    }
                 }
-            } else {
-                Text(error.localizedDescription)
+                .frame(width: geometry.size.width)
+                .frame(minHeight: geometry.size.height)
+            }
+            .refreshable {
+                await viewModel.sendAsync(.onPullToRefresh)
             }
         }
     }

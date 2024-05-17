@@ -11,7 +11,7 @@ import HomeFeature
 public struct ProductionRootScreen: View {
     public var body: some View {
         NavigationStack {
-            HomeView()
+            HomeScreen()
         }
     }
     

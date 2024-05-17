@@ -7,17 +7,16 @@
 
 import SwiftUI
 
-package struct HomeView: View {
+package struct HomeScreen: View {
     @StateObject var viewModel = HomeViewModel()
     package var body: some View {
         RepositoryListView(viewModel: viewModel)
+            .navigationBarTitleDisplayMode(.inline)
             .searchable(text: .init(get: { viewModel.uiState.searchText }, set: { newValue in
-                viewModel.changeSearchText(newValue)
-            }))
+                viewModel.send(.onSearchTextChange(searchText: newValue))
+            }), placement: .navigationBarDrawer(displayMode: .always))
             .onSubmit(of: .search) {
-                Task {
-                    await viewModel.searchRepositories()
-                }
+                Task { await viewModel.sendAsync(.onRepositoriesSearch) }
             }
     }
     
@@ -26,6 +25,6 @@ package struct HomeView: View {
 
 #if DEBUG
 #Preview {
-    HomeView()
+    HomeScreen()
 }
 #endif
