@@ -51,6 +51,17 @@ private extension RepositoryListView {
             ForEach(repositories) { repository in
                 RepositoryRowView(repository: repository)
             }
+            
+            if viewModel.uiState.canLoadNextPage {
+                HStack {
+                    Spacer()
+                    ProgressView()
+                        .onAppear {
+                            Task { await viewModel.sendAsync(.onNextPageFetch)}
+                        }
+                    Spacer()
+                }.id(UUID())
+            }
         }
         .refreshable {
             await viewModel.sendAsync(.onPullToRefresh)
