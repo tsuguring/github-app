@@ -23,6 +23,7 @@ package final class RepoDefaultRepository: RepoRepository {
     
     package func searchRepository(keyword: String, page: Int) async throws -> SearchResponse<Repository> {
         let request = RepositoryRequest(keyword: keyword, page: page)
+        try await Task.sleep(nanoseconds: 500_000_000) // インジケーターを表示させるため、0.5秒の停止させる
         let response = try await apiClient.request(with: request)
         return response
     }
