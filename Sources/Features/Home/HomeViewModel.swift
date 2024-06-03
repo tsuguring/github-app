@@ -13,14 +13,15 @@ struct RepositoryUIState {
     var repositories: Stateful<[Repository]> = .idle
     var searchText: String = ""
     var currentPage: Int = 1
-    var totailRepositoriesCount: Int = 0
+    var totalRepositoriesCount: Int = 0
     var canLoadNextPage: Bool {
-        currentPage * 30 < totailRepositoriesCount // 1ページ30個のリポジトリを取得するので、currentPage*30がtotalRepositoriesCountより小さければ次のページをロードできる
+        currentPage * 30 < totalRepositoriesCount
     }
 }
 
 enum HomeAction {
-    case onSearchTextChange(searchText: String)}
+    case onSearchTextChange(searchText: String)
+}
 
 enum HomeActionAsync {
     case onRepositoriesSearch
@@ -31,6 +32,7 @@ enum HomeActionAsync {
 @MainActor
 final class HomeViewModel: ObservableObject {
     @Published private(set) var uiState: RepositoryUIState = RepositoryUIState()
+    private var currentTask: Task<Void, Never>?
     private let repoRepository: RepoRepository
     
     init(repoRepository: some RepoRepository = RepoDefaultRepository()) {
@@ -45,14 +47,18 @@ final class HomeViewModel: ObservableObject {
     }
     
     func sendAsync(_ action: HomeActionAsync) async {
-        switch action {
-        case .onRepositoriesSearch:
-            await searchRepositories()
-        case .onPullToRefresh:
-            await pullToRefresh()
-        case .onNextPageFetch:
-            await fetchNextPage()
+        currentTask?.cancel() // 既存のタスクがあればキャンセル
+        currentTask = Task {
+            switch action {
+            case .onRepositoriesSearch:
+                await searchRepositories()
+            case .onPullToRefresh:
+                await pullToRefresh()
+            case .onNextPageFetch:
+                await fetchNextPage()
+            }
         }
+        await currentTask?.value // タスクが完了するまで待機
     }
 }
 
@@ -84,8 +90,9 @@ private extension HomeViewModel {
         } catch {
             if Task.isCancelled {
                 uiState.repositories = .idle
+            } else {
+                uiState.repositories = .failed(error)
             }
-            uiState.repositories = .failed(error)
         }
     }
     
@@ -93,7 +100,7 @@ private extension HomeViewModel {
         do {
             let repositories = try await self.repoRepository.searchRepository(keyword: uiState.searchText, page: uiState.currentPage)
             uiState.repositories = .success(repositories.items)
-            uiState.totailRepositoriesCount = repositories.totalCount
+            uiState.totalRepositoriesCount = repositories.totalCount
         } catch {
             if Task.isCancelled {
                 uiState.repositories = .idle
