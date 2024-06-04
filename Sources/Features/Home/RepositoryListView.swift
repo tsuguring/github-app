@@ -32,7 +32,7 @@ private extension RepositoryListView {
                 .resizable()
                 .frame(width: 70, height: 70)
             Text("検索しましょう")
-                .font(.system(size:20))
+                .font(.system(size: 20))
                 .bold()
                 .padding(.bottom, 10)
             Text("GitHubのリポジトリを検索できます")
@@ -47,9 +47,23 @@ private extension RepositoryListView {
     }
     
     func RepositoryList(_ repositories: [Repository]) -> some View {
-        List{
+        List {
             ForEach(repositories) { repository in
                 RepositoryRowView(repository: repository)
+            }
+            
+            if viewModel.uiState.canLoadNextPage {
+                HStack {
+                    Spacer()
+                    ProgressView()
+                        .id(UUID())
+                    Spacer()
+                }
+                .onAppear {
+                    Task {
+                        await viewModel.sendAsync(.onNextPageFetch)
+                    }
+                }
             }
         }
         .refreshable {
@@ -66,7 +80,7 @@ private extension RepositoryListView {
                         .resizable()
                         .frame(width: 70, height: 70)
                     Text("リポジトリが取得できませんでした")
-                        .font(.system(size:20))
+                        .font(.system(size: 20))
                         .bold()
                         .padding(.bottom, 10)
                     if let fetchError = error as? APIClientError {
