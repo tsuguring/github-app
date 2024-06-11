@@ -49,7 +49,11 @@ private extension RepositoryListView {
     func RepositoryList(_ repositories: [Repository]) -> some View {
         List {
             ForEach(repositories) { repository in
-                RepositoryRowView(repository: repository)
+                NavigationLink {
+                    RepositoryDetailView(repositoryUrl: repository.htmlPath)
+                } label: {
+                    RepositoryRowView(repository: repository)
+                }
             }
             
             if viewModel.uiState.canLoadNextPage {
