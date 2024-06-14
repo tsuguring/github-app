@@ -10,11 +10,9 @@
 - [アーキテクチャ](#アーキテクチャ)
 - [モジュール分割](#モジュール分割)
 - [コーディングルール](#コーディングルール)
-- [パッケージ管理](#パッケージ管理)
 
 ## 概要
 キーワードを入力してGitHubのリポジトリを検索、詳細表示できるiOSアプリ
-<details><summary>スクリーンショット</summary>
 
 | 検索画面 | 検索中 | 通信失敗画面 | リポジトリ一覧 | リポジトリ詳細 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -50,10 +48,12 @@
 
 - MVVM+Layerd Architecture
 
+<img width="1300" alt="architecture" src="https://github.com/tsuguring/github-app/assets/52564598/055bea55-e1c9-4247-bdc0-4c78c0f61ada">
+
+
 ## モジュール分割
 
-<img src="https://github.com/tsuguring/github-app/assets/52564598/ca7ec1fc-de8f-49b8-86d8-94aa3c462fce" width=1300>
-
+<img width="1300" alt="modularization" src="https://github.com/tsuguring/github-app/assets/52564598/1fff41ae-ec72-4296-85ce-600ecba42a68">
 
 ## コーディングルール
 
