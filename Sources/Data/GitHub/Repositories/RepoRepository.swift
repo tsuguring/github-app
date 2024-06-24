@@ -18,7 +18,7 @@ package final class RepoDefaultRepository: RepoRepository {
     private let apiClient: APIClient
     
     package init(apiClient: APIClient = APIClient()) {
-        self.apiClient = APIClient()
+        self.apiClient = apiClient
     }
     
     package func searchRepository(keyword: String, page: Int) async throws -> SearchResponse<Repository> {
