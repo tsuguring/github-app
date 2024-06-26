@@ -7,8 +7,12 @@
 
 import Foundation
 
- package struct APIClient {
-    private let session:URLSession = {
+protocol APIClientProtocol {
+    func request<Request: BaseRequestProtocol>(with request: Request) async throws -> Request.ResponseType
+}
+
+package struct APIClient: APIClientProtocol {
+    private let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
     }()
