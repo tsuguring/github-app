@@ -15,9 +15,9 @@ package protocol RepoRepository {
 package final class RepoDefaultRepository: RepoRepository {
     package static let shared = RepoDefaultRepository()
     
-    private let apiClient: APIClient
+    private let apiClient: APIClientProtocol
     
-    package init(apiClient: APIClient = APIClient()) {
+    package init(apiClient: APIClientProtocol = APIClient()) {
         self.apiClient = apiClient
     }
     

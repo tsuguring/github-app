@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol APIClientProtocol {
+package protocol APIClientProtocol {
     func request<Request: BaseRequestProtocol>(with request: Request) async throws -> Request.ResponseType
 }
 
