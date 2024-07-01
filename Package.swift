@@ -34,6 +34,13 @@ let package = Package(
             name: "HomeFeature",
             dependencies: ["GitHubData", "UICore"],
             path: "./Sources/Features/Home"),
+        .testTarget(
+            name: "HomeFeatureTests",
+            dependencies: ["HomeFeature", "NetworkCore"],
+            path: "./Tests/Features/HomeTests",
+            resources: [
+                .copy("SearchRepositoriesTestData.json")
+            ]),
         
         //Data layer
         .target(

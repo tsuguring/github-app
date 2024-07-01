@@ -9,7 +9,7 @@ import Foundation
 import GitHubData
 import UICore
 
-struct RepositoryUIState {
+struct RepositoryUIState: Equatable {
     var repositories: Stateful<[Repository]> = .idle
     var searchText: String = ""
     var currentPage: Int = 1
