@@ -105,16 +105,6 @@
 #### 参考
 - [Android アーキテクチャ ガイド](https://developer.android.com/topic/architecture?hl=ja&_gl=1*9nqjrw*_up*MQ..*_ga*NjUxMjk3MzY1LjE3MTk4NDI3NDU.*_ga_6HH9YJMN9M*MTcxOTg0Mjc0NS4xLjAuMTcxOTg0Mjc0NS4wLjAuMA..#recommended-app-arch)
 
-### Layerd Architecture
-#### UIレイヤー
-以下の2つの要素を持つ。
-- 画面にデータを表示する要素。SwiftUIを用いてViewModelが持つ画面の状態(UiState)を画面に表示
-- 画面状態の管理　および　ユーザー操作に対してのロジック処理　を行う要素。ViewModelでそれらを行う
-#### Dataレイヤー
-- 主にアプリデータやビジネスロジックが含まれている。データモデルの定義やネットワークリクエストなどの要素を持つ
-#### 参考
-- https://developer.android.com/topic/architecture?hl=ja&_gl=1*9nqjrw*_up*MQ..*_ga*NjUxMjk3MzY1LjE3MTk4NDI3NDU.*_ga_6HH9YJMN9M*MTcxOTg0Mjc0NS4xLjAuMTcxOTg0Mjc0NS4wLjAuMA..#recommended-app-arch
-  
 ## コーディングルール
 
 [API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/)
