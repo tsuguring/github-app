@@ -56,7 +56,7 @@
 ### Featureモジュール
 - **役割**: 特定の機能をカプセル化し、それに対応するUIとViewModelを提供。
 - **重要性**: 各機能を独立して開発およびテストするため、モジュール化が重要。
-- **依存関係**: データモジュールに依存。
+- **依存関係**: Dataモジュール・Coreモジュール(UICore)に依存。
 
 ### Dataモジュール
 - **役割**: アプリケーションのデータ管理を担当し、リポジトリ、モデルクラスを提供。
@@ -66,7 +66,7 @@
 ### Coreモジュール
 - **役割**: アプリケーション全体で共通して使用されるコードを提供し、カスタムUI要素、ネットワーククライアントなどが含まれる。
 - **重要性**: アプリの一貫性と効率性を保つために不可欠。
-- **依存関係**: すべてのモジュールに依存。
+- **依存関係**: Featureモジュール・Dataモジュールに依存される。
 
 ### 参考
 [Android モジュール化](https://developer.android.com/topic/modularization/patterns?hl=ja&_gl=1*v48wl3*_up*MQ..*_ga*MTg1MTg0MDgzNy4xNzE5ODQyOTE3*_ga_6HH9YJMN9M*MTcxOTg0MjkxNi4xLjAuMTcxOTg0MjkxNi4wLjAuMA..#types-of-modules)
